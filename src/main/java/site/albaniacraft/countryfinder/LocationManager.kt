@@ -68,6 +68,7 @@ public object LocationManager {
         val z = -1 * ((location.first.toFloat() * Config.scale) / Config.tiles)
         return Pair(x.toFloat(), z.toFloat())
     }
+    // btw im not a math genius i stole the forumla from here: https://www.movable-type.co.uk/scripts/latlong.html
     private fun calculateDistance(coords1: Pair<String, String>, coords2: Pair<String, String>): Double {
         val lat1 = coords1.first.toDouble()
         val lon1 = coords1.second.toDouble()
