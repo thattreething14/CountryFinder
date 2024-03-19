@@ -44,6 +44,5 @@ class WhereAmICommand : CommandExecutor {
             }
 
             return true
-        return false
     }
 }
