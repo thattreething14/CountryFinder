@@ -1,0 +1,18 @@
+name: CountryFinder
+version: '${version}'
+main: site.albaniacraft.countryfinder.CountryFinderPlugin
+api-version: '1.20'
+authors: [big_mop]
+description: a plugin made for people
+commands:
+  whereami:
+    description: balls
+    permission: countryfinder.whereami
+  getlocation:
+    description: balls
+    permission: countryfinder.getlocation
+permissions:
+  countryfinder.whereami:
+    description: balls
+  countryfinder.getlocation:
+    description: balls
