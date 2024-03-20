@@ -8,6 +8,7 @@ object Config {
     private val plugin: Plugin = CountryFinderPlugin.instance
     var scale: Double = 3072.0
     var tiles: Double = 3.0
+    var cooldown: Long = 30L
     init {
         loadConfig()
     }
@@ -31,6 +32,7 @@ object Config {
         val config = YamlConfiguration.loadConfiguration(configFile)
         scale = config.getDouble("scale", 3072.0)
         tiles = config.getDouble("tiles", 3.0)
+        cooldown = config.getLong("cooldown", 30L)
     }
 
 }

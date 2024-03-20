@@ -7,6 +7,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import site.albaniacraft.countryfinder.Config
 import site.albaniacraft.countryfinder.LocationManager
 import site.albaniacraft.countryfinder.Messages
 
@@ -26,6 +27,11 @@ class WhereAmICommand : CommandExecutor {
                 Messages.error(sender, "You don't have permission to use this command!")
                 return true
             }
+        if (LocationManager.cooldowns.containsKey(sender.name) && LocationManager.cooldowns[sender.name]!! > System.currentTimeMillis()) {
+            val remainingTime = (LocationManager.cooldowns[sender.name]!! - System.currentTimeMillis()) / 1000
+            Messages.error(sender, "You must wait $remainingTime seconds before using this command again.")
+            return false
+        }
 
             val playerLocation = sender.location
             val closestLocation = LocationManager.getClosestLocation(playerLocation)
@@ -42,7 +48,7 @@ class WhereAmICommand : CommandExecutor {
             } else {
                 Messages.error(sender, "Could not determine the closest town.")
             }
-
+        LocationManager.cooldowns[sender.name] = System.currentTimeMillis() + Config.cooldown * 1000
             return true
     }
 }
